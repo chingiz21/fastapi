@@ -19,7 +19,7 @@ router.get("/getnftinfo", (req, res) => {
 
         const filename = req.query.title;
 
-        const data = fs.readFileSync(`./${filename}.txt`, 'utf8');
+        const data = fs.readFileSync(`/tmp/${filename}.txt`, 'utf8');
 
         res.json({
             status: 'success',
@@ -42,11 +42,9 @@ router.get("/getnftinfo", (req, res) => {
 router.post("/nft", (req, res) => {
     const body = req.body;
 
-    console.log(body);
+    const content = JSON.stringify(body.content);
 
-    const content = body.content.toString();
-
-    fs.writeFile(`./${body.fileName}.txt`, content, err => {
+    fs.writeFile(`/tmp/${body.fileName}.json`, content, err => {
         if (err) {
             res.json({
                 message: 'Error on writing file'
