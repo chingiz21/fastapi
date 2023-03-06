@@ -19,7 +19,7 @@ router.get("/getnftinfo", (req, res) => {
 
         const filename = req.query.title;
 
-        const data = fs.readFileSync(`/tmp/${filename}.txt`, 'utf8');
+        const data = fs.readFileSync(`/tmp/${filename}.json`, 'utf8');
 
         res.json({
             status: 'success',
